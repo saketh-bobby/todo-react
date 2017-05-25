@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-class TodoBox extends Component {
+class AddNewTodo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-	    newTodo:''
+      value: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(evt) {
-  	console.log(evt);
     this.setState({
       value: evt.target.value,
     });
   }
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    console.log(this.state.value);
-    this.setState({
-      newTodo: this.state.value,
-    });
-  }
   render() {
     return (
       <div>
         {/*make this input a controlled component*/}
-        <form onSubmit={this.handleSubmit}>
+        <form
+	        onSubmit={
+	        	(event) => {
+        	    event.preventDefault();
+        	    this.props.handleSubmit(this.state.value);
+            }
+          }
+        >
           <div className="todo-textbox-container">
             <input
               type="text"
@@ -47,7 +44,7 @@ class TodoBox extends Component {
   }
 }
 
-TodoBox.propTypes = {};
-TodoBox.defaultProps = {};
+AddNewTodo.propTypes = {};
+AddNewTodo.defaultProps = {};
 
-export default TodoBox;
+export default AddNewTodo;

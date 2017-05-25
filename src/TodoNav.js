@@ -1,10 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-class NavBar extends React.Component {
+class TodoNav extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
@@ -33,4 +32,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default TodoNav;
