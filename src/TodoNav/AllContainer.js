@@ -5,7 +5,7 @@ import Todo from './Todo'
 const AllContainer = props => {
   return (
     <div>
-        {props.todos.map((todo, index) => <Todo key={index} data={todo} />)}
+        {props.todos.map((todo) => <Todo key={todo.id} data={todo} wrapperStateHandler={props.wrapperStateHandler} />)}
     </div>
   );
 };

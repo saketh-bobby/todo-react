@@ -1,26 +1,26 @@
-import ListTabsContainer from './ListTabsContainer'
+import AllContainer from './TodoNav/AllContainer';
+import PendingContainer from './TodoNav/PendingContainer';
+import CompletedContainer from './TodoNav/CompletedContainer';
+import PriorityContainer from "./TodoNav/PriorityContainer";
 
 const routeConfig = [
-  {
-    path: "/",
-    component: ListTabsContainer
-  },
-  {
-    path: "/pending",
-    component: ListTabsContainer
-  },
-  {
-    path: "/completed",
-    component: ListTabsContainer
-  },
-  {
-    path: "/priority",
-    component: ListTabsContainer
-  },
-  {
-    path: "/labels",
-    component: ListTabsContainer
-  }
+	{
+		exact:true,
+		path:'/',
+		component:AllContainer
+	},
+	{
+		path:'/pending',
+		component:PendingContainer
+	},
+	{
+		path:'/completed',
+		component:CompletedContainer
+	},
+	{
+		path:'/priority',
+		component:PriorityContainer
+	}
 ];
 
 export { routeConfig };
