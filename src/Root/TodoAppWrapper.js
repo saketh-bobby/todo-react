@@ -82,7 +82,7 @@ class TodoAppWrapper extends Component {
           todos={todos}
           wrapperStateHandler={this.handleChanges}
         />
-	      <div>{todos.length !== 1 && todos.length > 0 ? `${todos.length} todos` : `${todos.length} todo`}</div>
+	      <div>{todos.length !== 1 && todos.length >= 0 ? `${todos.length} todos` : `${todos.length} todo`}</div>
       </div>
     );
   }
