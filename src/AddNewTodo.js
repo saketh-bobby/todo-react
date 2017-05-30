@@ -41,7 +41,7 @@ class AddNewTodo extends Component {
       completed: false,
       ...this.state,
     };
-    this.props.handleSubmit(newTodo);
+    this.setState( () => ({value:''}),this.props.handleSubmit.bind(null,newTodo));
   }
 
   render() {
@@ -63,6 +63,7 @@ class AddNewTodo extends Component {
               value={this.state.value}
               onChange={this.handleChange}
               autoComplete="off"
+              autoFocus
             />
             <select
               value={this.state.priority}
