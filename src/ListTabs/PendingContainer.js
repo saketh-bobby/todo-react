@@ -1,11 +1,12 @@
 import React from 'react';
-import Todo from './Todo';
-// import PropTypes from 'prop-types';
+import Todo from './shared/Todo';
+import GenericListContainer from './shared/GenericListContainer';
+import PropTypes from 'prop-types';
 
 const PendingContainer = props => {
   return (
-    <div>
-      {props.todos
+    <GenericListContainer
+      todos={props.todos
         .filter(todo => {
           return !todo.completed;
         })
@@ -16,11 +17,13 @@ const PendingContainer = props => {
             wrapperStateHandler={props.wrapperStateHandler}
           />
         ))}
-    </div>
-  );
+    />
+);
 };
 
-PendingContainer.propTypes = {};
-PendingContainer.defaultProps = {};
+PendingContainer.propTypes = {
+	todos: PropTypes.array.isRequired,
+	wrapperStateHandler: PropTypes.func.isRequired
+};
 
 export default PendingContainer;

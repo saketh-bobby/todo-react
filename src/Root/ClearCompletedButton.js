@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ClearCompletedButton = (props) => {
 	return (
@@ -9,7 +9,8 @@ const ClearCompletedButton = (props) => {
 	);
 };
 
-ClearCompletedButton.propTypes    = {};
-ClearCompletedButton.defaultProps = {};
+ClearCompletedButton.propTypes    = {
+	handleClearCompleted: PropTypes.func.isRequired
+};
 
 export default ClearCompletedButton;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddNewTodo extends Component {
   constructor(props) {
@@ -67,7 +67,6 @@ class AddNewTodo extends Component {
             />
             <select
               value={this.state.priority}
-              name="priority-control"
               id="priority-control"
               onChange={this.handlePriorityChange}
             >
@@ -88,7 +87,9 @@ class AddNewTodo extends Component {
   }
 }
 
-AddNewTodo.propTypes = {};
-AddNewTodo.defaultProps = {};
+AddNewTodo.propTypes = {
+	length: PropTypes.number.isRequired,
+	handleSubmit: PropTypes.func.isRequired
+};
 
 export default AddNewTodo;

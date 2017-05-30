@@ -1,7 +1,7 @@
-import AllContainer from './TodoNav/AllContainer';
-import PendingContainer from './TodoNav/PendingContainer';
-import CompletedContainer from './TodoNav/CompletedContainer';
-import PriorityContainer from "./TodoNav/PriorityContainer";
+import AllContainer from './ListTabs/AllContainer';
+import PendingContainer from './ListTabs/PendingContainer';
+import CompletedContainer from './ListTabs/CompletedContainer';
+import PriorityContainer from "./ListTabs/PriorityContainer";
 
 const routeConfig = [
 	{

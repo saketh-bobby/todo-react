@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { routeConfig as routes } from '../router';
 
@@ -29,7 +29,9 @@ const TabbedContainer = (props) => {
 	);
 };
 
-TabbedContainer.propTypes    = {};
-TabbedContainer.defaultProps = {};
+TabbedContainer.propTypes    = {
+	todos: PropTypes.array.isRequired,
+	wrapperStateHandler: PropTypes.func.isRequired
+};
 
 export default TabbedContainer;

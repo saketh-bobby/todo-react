@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import AddNewTodo from '../AddNewTodo';
-import TodoNav from '../TodoNav/TodoNav';
+import AddNewTodo from './AddNewTodo';
+import TodoNav from './TodoNav';
 import TabbedContainer from './TabbedContainer';
 
 import ClearCompletedButton from './ClearCompletedButton';
@@ -17,7 +16,7 @@ class TodoAppWrapper extends Component {
       todos: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChanges = this.handleChanges.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
@@ -26,11 +25,11 @@ class TodoAppWrapper extends Component {
       return {
         todos: this.state.todos.concat(newTodo),
       };
-      //TODO: as well as persist with local storage
+      //TODO: as well as persist with firebase
     });
   }
 
-  handleChanges(todoId, newValue, action) {
+  handleStateChange(todoId, newValue, action) {
     let todos = this.state.todos;
     const index = this.state.todos.findIndex(todo => todoId === todo.id);
     if (action === 'toggleCompletion') {
@@ -48,47 +47,48 @@ class TodoAppWrapper extends Component {
           todos,
         };
       });
-    } else if(action === 'editTodo') {
-    	todos[index].value = newValue;
-    	this.setState(() => ({todos}));
+    } else if (action === 'editTodo') {
+      todos[index].value = newValue;
+      this.setState(() => ({ todos }));
     }
   }
 
   handleClearCompleted() {
-    let todos = Object.assign([],this.state.todos);
+    let todos = Object.assign([], this.state.todos);
     todos = todos.filter(todo => !todo.completed);
     this.setState(() => ({
-      todos
+      todos,
     }));
   }
 
   render() {
-  	const todos = this.state.todos;
+    const todos = this.state.todos;
     return (
       <div>
-        <AddNewTodo
-          length={todos.length}
-          handleSubmit={this.handleSubmit}
-        />
+        <AddNewTodo length={todos.length} handleSubmit={this.handleSubmit} />
         <TodoNav />
-        {todos.filter(todo => {
-          return todo.completed;
-        }).length !== 0
-          ? <ClearCompletedButton
-              handleClearCompleted={this.handleClearCompleted}
-            />
-          : null}
         <TabbedContainer
           todos={todos}
-          wrapperStateHandler={this.handleChanges}
+          wrapperStateHandler={this.handleStateChange}
         />
-	      <div>{todos.length !== 1 && todos.length >= 0 ? `${todos.length} todos` : `${todos.length} todo`}</div>
+        <div>
+          {todos.length !== 1 && todos.length >= 0
+            ? `${todos.length} todos`
+            : `${todos.length} todo`}
+        </div>
+	      <div>
+		      {todos.filter(todo => {
+			      return todo.completed;
+		      }).length !== 0
+			      ? <ClearCompletedButton
+				      handleClearCompleted={this.handleClearCompleted}
+			      />
+			      : null}
+	      </div>
       </div>
     );
   }
 }
 
-TodoAppWrapper.propTypes = {};
-TodoAppWrapper.defaultProps = {};
 
 export default TodoAppWrapper;
