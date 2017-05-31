@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './ClearCompletedButton.css';
 
 const ClearCompletedButton = (props) => {
 	return (
-		<div>
+		<div className="clear-completed-container">
 			<button onClick={props.handleClearCompleted} >Clear Completed</button>
 		</div>
 	);

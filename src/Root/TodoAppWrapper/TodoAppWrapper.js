@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import AddNewTodo from './AddNewTodo';
-import TodoNav from './TodoNav';
-import TabbedContainer from './TabbedContainer';
+import AddNewTodo from '../AddNewTodo/AddNewTodo';
+import TodoNav from '../TodoNav/TodoNav';
+import TabbedContainer from '../TabbedContainer/TabbedContainer';
+import './TodoAppWrapper.css';
 
-import ClearCompletedButton from './ClearCompletedButton';
+import ClearCompletedButton from '../ClearCompletedButton/ClearCompletedButton';
 
 /*
  *   TODO: add push notifications, add editing a todo and maybe add note taking too and lists also
@@ -67,28 +68,31 @@ class TodoAppWrapper extends Component {
       <div>
         <AddNewTodo length={todos.length} handleSubmit={this.handleSubmit} />
         <TodoNav />
-        <TabbedContainer
-          todos={todos}
-          wrapperStateHandler={this.handleStateChange}
-        />
-        <div>
-          {todos.length !== 1 && todos.length >= 0
-            ? `${todos.length} todos`
-            : `${todos.length} todo`}
+        {todos.length === 0
+          ? <div className="empty-container">No Todos for now</div>
+          : <TabbedContainer
+              todos={todos}
+              wrapperStateHandler={this.handleStateChange}
+            />}
+
+        <div className="app-footer">
+          <div className="todo-count">
+            {todos.length !== 1 && todos.length >= 0
+              ? `${todos.length} todos`
+              : `${todos.length} todo`}
+          </div>
+          {todos.filter(todo => {
+            return todo.completed;
+          }).length !== 0
+            ? <ClearCompletedButton
+                handleClearCompleted={this.handleClearCompleted}
+              />
+            : null}
         </div>
-	      <div>
-		      {todos.filter(todo => {
-			      return todo.completed;
-		      }).length !== 0
-			      ? <ClearCompletedButton
-				      handleClearCompleted={this.handleClearCompleted}
-			      />
-			      : null}
-	      </div>
+
       </div>
     );
   }
 }
-
 
 export default TodoAppWrapper;

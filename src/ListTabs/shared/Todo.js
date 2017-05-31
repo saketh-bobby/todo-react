@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './Todo.css';
 class Todo extends React.Component {
   constructor(props) {
     super(props);
@@ -26,9 +26,7 @@ class Todo extends React.Component {
   }
 
   toggleEditing(evt) {
-    this.setState(
-      () => ({ editTodo: !this.state.editTodo })
-    );
+    this.setState(() => ({ editTodo: !this.state.editTodo }));
   }
 
   shouldEditComplete(evt) {
@@ -56,36 +54,61 @@ class Todo extends React.Component {
   render() {
     const labels = this.props.data.labels.split(/\s+|,/);
     return (
-      <div>
-        <div onClick={this.handleCompletionToggle}>
+      <div className="todo-item">
+        <div className="toggle-completed" onClick={this.handleCompletionToggle}>
           {this.props.data.completed
             ? <i className="fa fa-check-square" />
             : <i className="fa fa-square-o" />}
         </div>
         {this.state.editTodo === false
-          ? <div onDoubleClick={this.toggleEditing}>
+          ? <div onDoubleClick={this.toggleEditing} className="todo-value">
               {this.state.editingValue}
             </div>
           : <input
+              className="todo-value"
               onChange={this.handleEditChange}
               onKeyDown={this.shouldEditComplete}
               value={this.state.editingValue}
               autoFocus
               onBlur={this.toggleEditing}
             />}
-        <div id="priority-label">{this.props.data.priority}</div>
-        {labels.map((label, index) => (
-          <div id="label" key={index}>{label}</div>
-        ))}
-        <div onClick={this.handleRemoval}><i className="fa fa-remove" /></div>
+        <div className="remove-button" onClick={this.handleRemoval}>
+          <i className="fa fa-remove" />
+        </div>
+
+        <div className="priority-pill-container">
+          <div
+            id="priority-pill"
+            className={(() => {
+              const priority = this.props.data.priority;
+              if (priority <= 3) {
+                return 'pill-normal';
+              } else if (priority <= 6) {
+                return 'pill-warning';
+              } else {
+                return 'pill-danger';
+              }
+            })()}
+          >
+            Priority {this.props.data.priority}
+          </div>
+        </div>
+        <div className="label-pills-container">
+          {labels.length > 0 &&
+            labels[0] !== '' &&
+            labels.map((label, index) => {
+              if (label !== '')
+                return <span id="label-pill" key={index}>{label}</span>;
+            })}
+        </div>
       </div>
     );
   }
 }
 
 Todo.propTypes = {
-	data: PropTypes.object.isRequired,
-	wrapperStateHandler: PropTypes.func.isRequired
+  data: PropTypes.object.isRequired,
+  wrapperStateHandler: PropTypes.func.isRequired,
 };
 
 export default Todo;

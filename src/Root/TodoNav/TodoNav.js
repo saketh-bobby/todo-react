@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import './TodoNav.css';
 
 class TodoNav extends React.Component {
   constructor(props) {

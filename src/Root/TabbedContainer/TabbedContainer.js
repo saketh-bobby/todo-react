@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { routeConfig as routes } from '../router';
+import { routeConfig as routes } from '../../router';
+import './TabbedContainer.css';
 
 const TabbedContainer = (props) => {
 	return (

@@ -1,0 +1,57 @@
+.todo-item{
+    font-size:2em;
+    display:flex;
+    flex-wrap:wrap;
+    background:#589b8d;
+    border-radius: .3em;
+    padding: .3em;
+    margin: 1em 0;
+    justify-content: space-between;
+}
+.todo-item>*{
+    text-align:center;
+}
+.toggle-completed,.remove-button{
+    flex: 1 1 15%;
+}
+
+.todo-item .todo-value{
+    flex: 1 1 70%;
+}
+input.todo-value {
+  border-radius:.5em;
+    font-size: inherit;
+}
+
+
+.todo-item .priority-pill-container {
+    flex-basis:30%;
+}
+.todo-item .label-pills-container {
+    flex-basis:70%;
+}
+.todo-item #priority-pill {
+    font-size:.5em;
+    width: 30%;
+    margin: 0 auto;
+    color:#eee;
+    border-radius: 3px;
+    padding:.3em;
+}
+.todo-item #label-pill {
+    font-size:.5em;
+    margin: 0 .3em;
+    background:#337ab7;
+    color:#eee;
+    border-radius: 3px;
+    padding:.3em;
+}
+.pill-normal {
+    background: #398439;
+}
+.pill-warning {
+    background: #d58512;
+}
+.pill-danger {
+    background: #ac2925;
+}

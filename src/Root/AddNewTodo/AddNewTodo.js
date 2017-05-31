@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import './AddNewTodo.css'
 class AddNewTodo extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +41,7 @@ class AddNewTodo extends Component {
       completed: false,
       ...this.state,
     };
-    this.setState( () => ({value:''}),this.props.handleSubmit.bind(null,newTodo));
+    this.setState( () => ({value:'',labels:''}),this.props.handleSubmit.bind(null,newTodo));
   }
 
   render() {
@@ -56,29 +56,40 @@ class AddNewTodo extends Component {
             this.handleSubmit
           } /* calls handlesubmit on props see definition*/
         >
-          <div className="todo-textbox-container">
-            <input
-              type="text"
-              id="todo-textbox"
-              value={this.state.value}
-              onChange={this.handleChange}
-              autoComplete="off"
-              autoFocus
-            />
-            <select
-              value={this.state.priority}
-              id="priority-control"
-              onChange={this.handlePriorityChange}
-            >
-              {options}
-            </select>
-            <input
-              type="text"
-              value={this.state.labels}
-              onChange={this.handleLabelChange}
-              autoComplete="off"
-              placeholder="labels (comma or space seperated)"
-            />
+          <div className="add-todo-container">
+	          <label htmlFor="todo-textbox">
+		          <span>Enter the task:</span>
+		          <input
+			          type="text"
+			          id="todo-textbox"
+			          value={this.state.value}
+			          onChange={this.handleChange}
+			          autoComplete="off"
+			          autoFocus
+		            required={true}
+		            />
+	          </label>
+	          <label htmlFor="priority-control">
+		          <span>Priority (More is higher):</span>
+		          <select
+			          value={this.state.priority}
+			          id="priority-control"
+			          onChange={this.handlePriorityChange}
+		          >
+			          {options}
+		          </select>
+	          </label>
+	          <label htmlFor="label-input">
+		          <span>Labels (comma or space seperated)</span>
+		          <input
+			          type="text"
+			          value={this.state.labels}
+			          onChange={this.handleLabelChange}
+			          autoComplete="off"
+			          required={true}
+		          />
+	          </label>
+
             <button type="submit">Add Task</button>
           </div>
         </form>

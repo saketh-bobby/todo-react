@@ -1,0 +1,21 @@
+.app-footer {
+    display:flex;
+    background: #7c7287;
+    padding: .75em;
+    justify-content: space-between;
+    border-radius: .3em;
+}
+
+.empty-container {
+    text-align:center;
+    font-size:5em;
+    min-height: 30vh;
+}
+
+.todo-count {
+    background:#000;
+    color:#eee;
+    border-radius: 3px;
+    padding: .3em;
+}
+

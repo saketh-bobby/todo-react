@@ -1,5 +1,5 @@
 import React from "react";
-import TodoAppWrapper from './TodoAppWrapper';
+import TodoAppWrapper from './TodoAppWrapper/TodoAppWrapper';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
@@ -12,9 +12,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <div>
 						<TodoAppWrapper/>
-          </div>
         </Router>
       </div>
     );

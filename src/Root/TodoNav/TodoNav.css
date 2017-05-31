@@ -1,0 +1,28 @@
+nav {
+    background: #7c7287;
+    color: #DBCFB0;
+    border-radius: .3em;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    flex: 1;
+    list-style-type: none;
+}
+
+nav ul li a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #DBCFB0;
+    padding: 1em 0;
+
+}
+
+nav ul li a:hover {
+    background: #5F5768;
+}
